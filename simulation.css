@@ -1,0 +1,18 @@
+.menu {
+ margin:.3em 0;
+}
+
+p {
+ margin:.5em 0;
+}
+
+body {
+    font-family: 'Courgette', 'Tangerine', 'Arial', cursive, serif;
+}
+
+#authors {
+    font-family: 'Tangerine', 'Courgette', cursive, script, serif;
+    font-size: 28px;
+}
+
+a { text-decoration: none; }

@@ -1,0 +1,136 @@
+<!doctype html>
+<html manifest="appcache">
+<head>
+<title>Simulations</title>
+<meta charset="utf-8">
+<meta name="dcterms.rightsHolder" content="Copyright (C) Yunfei Dai, Martin Ma, Harry Zhou, Leonardo T. Rolla">
+<meta name="dcterms.dateCopyrighted" content="2019">
+<meta name="dcterms.rights" content="The owners waive all copyright and related or neighboring rights to this file">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Courgette">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
+<link rel="stylesheet" type="text/css" href="simulation.css">
+</head>
+<body style="background-image:url(background.png); background-size: 1500px;">
+
+<h1 id="percolation">Particle Systems Simulation</h1>
+<p id=authors>by Yunfei Dai, Martin Ma, Harry Zhou, <a href=http://mate.dm.uba.ar/~leorolla/ target=_blank>Leonardo T. Rolla</a>. December, 2019</p>
+
+<div id="content">
+<form id="inputs">
+    <div class=menu></div>
+        <select id="model" onchange="commonSelectDefault(this)">
+            <option value="potts">          Potts dynamics</option>
+            <option value="dp">             Directed Percolation</option>
+            <option value="voter">          Voter model</option>
+            <option value="cp2d">           Contact Process</option>
+            <option value="arw">            Activated Random Walks</option>
+            <option value="crw">            Coalescing Walks</option>
+            <option value="otas">           Annihilating XX Walks</option>
+            <option value="ttas">           Annihilating XY Walks</option>
+            <option value="dynamicBBS">     Dynamic BBS </option>
+            <option value="staticBBS">      Static BBS </option>
+            <option value="wetting">        Wetting Kawasaki </option>
+            <option value="wettingFast">    Wetting Fast </option>
+        </select>
+        <label> Model</br></label>
+    </div>
+
+    <div class=menu>
+        <input type="text" id="gridSize" value="50" maxlength="8" size="6">
+        <label>Grid Size in 2..600</label><br>
+    </div>
+    <div class=menu>
+        <input type="text" id="modelTime" value="40000" maxlength="8" size="6">
+        <label>Model Time in 0..1000000 seconds</label>
+    </div>
+    <div class=menu>
+        <input type="text" id="colorNumber" value="5" maxlength="1" size="6">
+        <label>Number of Colors in 2..9</label>
+    </div>
+    <div class=menu>
+        <input type="text" id="paramBeta" value="1.6" maxlength="7" size="6">
+        <label>β in [0,100], required for Potts, and Wetting</label>
+    </div>
+    <div class=menu>
+        <input type="text" id="paramZeta" value="0.21" maxlength="7" size="6">
+        <label>ζ in [0,1], required for ARW, Contact, CRW, Percolation, One-Type Annihilating, and Wetting</label>
+    </div>
+    <div class=menu>
+        <input type="text" id="paramLambda" value="0.1" maxlength="7" size="6">
+        <label>λ in [0,1], required for ARW, Contact, Percolation, and Static/Dynamic BBS</label>
+    </div>
+    <div class=menu>
+        <input type="text" id="paramDelta" value="0.06" maxlength="7" size="6">
+        <label>δ in [0,1], required for Contact, Percolation, Annihilating, and Wetting</label>
+    </div>
+    <div class=menu>
+        <input type="text" id="randSeed" value="" maxlength="4" size="6">
+        <label>PRNG Seed in 0..9999 (0 for randomly chosen seed, 1 for native JavaScript PRNG)</label>
+    </div>
+    <div class=menu></div>
+        <select id="colorOption">
+            <option>Earth Colors</option>
+            <option>Light Colors</option>
+            <option>Primary Colors</option>
+        </select>
+        <label> Color palette</br></label>
+    </div>
+
+
+    <div class=menu>
+    <button type="button" id="mybutton" onclick="mainSimulate()" autofocus style="height:3.5em; width:15em">Run Simulation</button>
+        <input type="radio" id = "full_speed" name="speed" value="full_speed" onclick="commonSetSpeed(this)">Full speed
+        <input type="radio" id = "ultra_fast" name="speed" value="ultra_fast" onclick="commonSetSpeed(this)">Ultra Fast
+        <input type="radio" id = "very_fast"  name="speed" value="very_fast"  onclick="commonSetSpeed(this)">Very Fast
+        <input type="radio" id = "fast"       name="speed" value="fast"       onclick="commonSetSpeed(this)">Fast
+        <input type="radio" id = "slow"       name="speed" value="slow"       onclick="commonSetSpeed(this)" checked>Slow
+        <input type="radio" id = "very_slow"  name="speed" value="very_slow"  onclick="commonSetSpeed(this)">Very Slow
+    <p></p>
+    </div>
+</form>
+
+<canvas id="animation" width="3600" height="3600" style="width: 600px; background:#aaaaaa33;">
+    Configuration (include img)
+</canvas>
+
+<p><span id="Ends">Seed:</span></p>
+
+<br>
+<br>
+
+<!-- External Javascript files: -->
+<script src=main.js></script>
+<script src=common.js></script>
+<script src=data.js></script>
+<script src=voter.js></script>
+<script src=potts.js></script>
+<script src=arw.js></script>
+<script src=crw.js></script>
+<script src=cp2d.js></script>
+<script src=dp.js></script>
+<script src=otas.js></script>
+<script src=ttas.js></script>
+<script src=dynamicBBS.js></script>
+<script src=staticBBS.js></script>
+<script src=wetting.js></script>
+<script src=wettingFast.js></script>
+<script src=prng.js></script>
+
+<!-- Statcounter code:  -->
+<script type="text/javascript">
+var sc_project=12061754; 
+var sc_invisible=1; 
+var sc_security="acd30a06"; 
+</script>
+<script type="text/javascript"
+src="https://www.statcounter.com/counter/counter.js"
+async></script>
+<noscript><div class="statcounter"><img
+class="statcounter"
+src="https://c.statcounter.com/12061754/0/acd30a06/1/"
+></div></noscript>
+
+</div>
+
+</body>
+</html>
