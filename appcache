@@ -1,0 +1,30 @@
+CACHE MANIFEST
+# v68
+
+NETWORK:
+*
+
+# FALLBACK:
+
+CACHE:
+.
+index.html
+webpage_all.html
+background.png
+arw.js
+common.js
+cp2d.js
+crw.js
+data.js
+dp.js
+dynamicBBS.js
+main.js
+otas.js
+potts.js
+prng.js
+simulation.css
+staticBBS.js
+ttas.js
+voter.js
+wetting.js
+wettingFast.js
